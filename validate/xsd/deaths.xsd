@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="countries">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="country" type="countryType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="countryType">
+		<xs:sequence>
+			<xs:element name="deaths" type="deathType"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="code" type="codeType" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="deathType">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="per-residents" type="prType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="codeType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z][A-Z][A-Z]"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="prType">
+		<xs:restriction base="xs:double"/>
+	</xs:simpleType>
+
+</xs:schema>

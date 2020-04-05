@@ -9,5 +9,7 @@
 
     $_CONFIG['getRequired'] = ['set'];
     $_CONFIG['postRequired'] = ['set', 'country_name', 'country_code'];
+    $_CONFIG['putRequired'] = ['set', 'country_code'];
+    $_CONFIG['deleteRequired'] = ['set', 'country_code'];
 
 ?>

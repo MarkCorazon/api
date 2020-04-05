@@ -17,10 +17,14 @@
             $response->missingParameterResponse("type");
         }
     } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $response->customResponse(200, "Ahw yeeh");
-
         $request = new Request;
         $request->makePostRequest();
+    } else if($_SERVER['REQUEST_METHOD'] === 'PUT'){
+        $request = new Request;
+        $request->makePutRequest();
+    } else if($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+        $request = new Request;
+        $request->makeDeleteRequest();
     }
 
     echo $response->getResponse();

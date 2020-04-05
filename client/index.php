@@ -12,8 +12,8 @@
     <h1 class="display-1 text-center">Api Visualization</h1>
     <div class="container col-11">
         <div class="row">
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="card mt-4 h-100">
+            <div class="col-lg-4 col-sm-6 col-12 mt-4">
+                <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Alcohol Consumption</h5>
                         <h6 class="card-subtitle mb-2 text-muted">(Liters of pure alcohol)</h6>
@@ -22,8 +22,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="card mt-4 h-100">
+            <div class="col-lg-4 col-sm-6 col-12 mt-4">
+                <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Deaths</h5>
                         <h6 class="card-subtitle mb-2 text-muted">(per 1000 residents)</h6>
@@ -32,8 +32,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="card mt-4 h-100">
+            <div class="col-lg-4 col-sm-6 col-12 mt-4">
+                <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Happiness</h5>
                         <h6 class="card-subtitle mb-2 text-muted">(Score on scale of 1 to 10)</h6>
@@ -43,8 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-3 mb-5" id="countriesInDept">
-        </div>
+        <div class="row mt-3 mb-5" id="countriesInDept"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
