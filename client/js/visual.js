@@ -80,3 +80,13 @@ function drawDeathsMap() {
     var chart = new google.visualization.GeoChart(document.getElementById('deathsVisualizer'));
     chart.draw(data, options);
 }
+
+
+var countries = ['NLD', 'SWE', 'RUS', 'DEU'];
+$.each(countries, function(i, country) {
+    var alcohol = requestDataByCountryCode('alcohol', country);
+    var deaths = requestDataByCountryCode('deaths', country).countries[0].country.deaths.amount * 1000;
+    var happiness = requestDataByCountryCode('happiness', country).countries[0].country.happiness.score;
+
+    $('#countriesInDept').append('<div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb-3"><div class="card mt-4 h-100"><div class="card-body text-center"><div class="display-1">'+country+'</div><h6 class="card-subtitle mb-3 text-muted">'+alcohol.countries[0].country.name+'</h6><hr><p class="card-text font-weight-bold"><i class="fas fa-glass-cheers"></i> Alcohol: <span class="font-weight-normal">'+alcohol.countries[0].country['alcohol-consumption'].unit+' Liter</span></p><p class="card-text font-weight-bold"><i class="fas fa-skull-crossbones"></i> Deaths: <span class="font-weight-normal">'+deaths+'</span></p><p class="card-text font-weight-bold"><i class="fas fa-laugh-beam"></i> Happiness: <span class="font-weight-normal" id="nlHappiness">'+happiness+'</span></p></div></div></div>');
+})
