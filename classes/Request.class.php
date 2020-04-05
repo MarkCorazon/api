@@ -37,9 +37,6 @@
             }
         }
 
-        // TODO: Check of country al bestaat in countries
-        // TODO: Als country al bestaat in andere tabel dan afbreken en error terug responden
-
         public function makePostRequest() {
             global $_CONFIG, $response, $db;
 
@@ -57,8 +54,17 @@
                 if($set == 'deaths') {
                     if(isset($_POST['deaths'])) {
                         $deaths = $db->secure($_POST['deaths']);
-                        $conn->query("INSERT INTO countries (code, country_name) VALUES ('{$country_code}', '{$country_name}')")or die($conn->error);
-                        $conn->query("INSERT INTO deaths (code, deaths) VALUES ('{$country_code}', '{$deaths}')");
+                        $countryExist = $conn->query("SELECT code FROM countries WHERE code = '{$country_code}'")->num_rows;
+                        if($countryExist == 0) {
+                            $conn->query("INSERT INTO countries (code, country_name) VALUES ('{$country_code}', '{$country_name}')")or die($conn->error);
+                        }
+                        $dataCountryExist = $conn->query("SELECT code FROM deaths WHERE code = '{$country_code}'")->num_rows;
+                        if($dataCountryExist == 0) {
+                            $conn->query("INSERT INTO deaths (code, deaths) VALUES ('{$country_code}', '{$deaths}')");
+                            $response->okResponse();
+                        } else {
+                            $response->customResponse(400, "Data bestaat al voor het land ".$country_code);
+                        }
                     } else {
                         $response->missingParameterResponse('deaths');
                     }
@@ -69,29 +75,35 @@
                     }
                     $rank = $db->secure($_POST['rank']);
                     $score = $db->secure($_POST['score']);
-                    $conn->query("INSERT INTO countries (code, country_name) VALUES ('{$country_code}', '{$country_name}')")or die($conn->error);
-                    $conn->query("INSERT INTO happiness (code, rank, score) VALUES ('{$country_code}', '{$rank}', '{$score}')");
+                    $countryExist = $conn->query("SELECT code FROM countries WHERE code = '{$country_code}'")->num_rows;
+                    if($countryExist == 0) {
+                        $conn->query("INSERT INTO countries (code, country_name) VALUES ('{$country_code}', '{$country_name}')")or die($conn->error);
+                    }
+                    $dataCountryExist = $conn->query("SELECT code FROM happiness WHERE code = '{$country_code}'")->num_rows;
+                    if($dataCountryExist == 0) {
+                        $conn->query("INSERT INTO happiness (code, rank, score) VALUES ('{$country_code}', '{$rank}', '{$score}')");
+                        $response->okResponse();
+                    } else {
+                        $response->customResponse(400, "Data bestaat al voor het land ".$country_code);
+                    }
                 } else if($set == 'alcohol') {
                     if(isset($_POST['alcohol'])) {
                         $alcohol = $db->secure($_POST['alcohol']);
-                        $conn->query("INSERT INTO countries (code, country_name) VALUES ('{$country_code}', '{$country_name}')")or die($conn->error);
-                        $conn->query("INSERT INTO alcohol (code, alcohol) VALUES ('{$country_code}', '{$alcohol}')");
+                        $countryExist = $conn->query("SELECT code FROM countries WHERE code = '{$country_code}'")->num_rows;
+                        if($countryExist == 0) {
+                            $conn->query("INSERT INTO countries (code, country_name) VALUES ('{$country_code}', '{$country_name}')")or die($conn->error);
+                        }
+                        $dataCountryExist = $conn->query("SELECT code FROM alcohol WHERE code = '{$country_code}'")->num_rows;
+                        if($dataCountryExist == 0) {
+                            $conn->query("INSERT INTO alcohol (code, alcohol) VALUES ('{$country_code}', '{$alcohol}')");
+                            $response->okResponse();
+                        } else {
+                            $response->customResponse(400, "Data bestaat al voor het land ".$country_code);
+                        }
                     } else {
                         $response->missingParameterResponse('alcohol');
                     }
                 }
-
-                // if($rawData->num_rows) {
-                //     if($_GET['type'] == 'xml') {
-                //         $convert = new Convert;
-                //         $convert->toXML($rawData);
-                //     } else if($_GET['type'] == 'json') {
-                //         $convert = new Convert;
-                //         $convert->toJson($rawData);
-                //     }
-                // } else {
-                //     $response->customResponse(404, "Er is geen data gevonden met de opgevraagde parameters");
-                // }
             } else {
                 $response->customResponse(404, "Dataset " . $set . " is niet gevonden");
             }

@@ -11,6 +11,10 @@
             $this->response = '{ "code": '. $code .', "message": "'. $message .'" }';
         }
 
+        public function okResponse() {
+            $this->response = '{ "code": 200, "message": "Success!" }';
+        }
+
         public function missingParameterResponse($parameter) {
             if(is_array($parameter)) {
                 $parameters = null;
