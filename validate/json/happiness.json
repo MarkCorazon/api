@@ -1,0 +1,14 @@
+{
+    "countries": [
+        {
+            "country": {
+                "code": "NLD",
+                "name": "Nederlands",
+                "happiness": {
+                    "score": 7.38,
+                    "rank": 7
+                }
+            }   
+        }
+    ]    
+}

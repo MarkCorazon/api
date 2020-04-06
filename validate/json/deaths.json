@@ -1,0 +1,14 @@
+{
+    "countries": [
+        {
+            "country": {
+                "code": "NLD",
+                "name": "Nederlands",
+                "deaths": {
+                    "per-residents": 1000,
+                    "amount": 8.7
+                }
+            }
+        }
+    ]    
+}

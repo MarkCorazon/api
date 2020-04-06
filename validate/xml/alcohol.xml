@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="alcohol.xsd">
+	<country name="Netherlands" code="NLD">
+		<alcohol-consumption>
+			<unit type="liter">
+				9.6
+			</unit>
+		</alcohol-consumption>
+	</country>
+</countries>

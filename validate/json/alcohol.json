@@ -1,0 +1,14 @@
+{
+    "countries": [
+        {
+            "country": {
+                "code": "NLD",
+                "name": "Nederlands",
+                "alcohol-consumption": {
+                    "type": "liter",
+                    "unit": 9.6
+                }
+            }
+        }
+    ]    
+}
