@@ -16,7 +16,7 @@ function requestAllTableData(table, type) {
                     });
                 });
             }
-            validateRequestedData(response, table, type);
+            //validateRequestedData(response, table, type);
             resp = response;
         }
     });
@@ -33,13 +33,12 @@ function requestDataByCountryCode(table, country_code, type) {
             alert(response);
         },
         success: function(response) {
-            validateRequestedData(response, table, type);
+            //validateRequestedData(response, table, type);
             resp = response;
         }
     });
     return resp;
 }
-requestDataByCountryCode('alcohol', 'NLD', 'xml');
 
 function validateRequestedData(validString, table, type) {
     $.ajax({
